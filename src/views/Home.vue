@@ -1,14 +1,15 @@
 <template>
-	<main class="p-8">
-	
+	<main >
+		<VideoList />
 	</main>
 </template>
 
 <script>
 	import VideoList from '../components/videos/VideoList'
+	import NavBar from '../components/NavBar'
 	
 	export default {
 		name: 'Home',
-		components: { VideoList },
+		components: { NavBar, VideoList },
 	}
 </script>

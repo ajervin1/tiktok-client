@@ -1,6 +1,6 @@
 <template>
-	<article class="font-size-xs card border" v-if="dataurl">
-		<video :src="dataurl" controls></video>
+	<article class="font-size-xs card border" >
+		<img :src="post.covers.dynamic" class="">
 		<div class="card-body">
 			<div class="meta-data">
 				<div>Views: {{ post.playCount }}</div>
@@ -30,12 +30,14 @@
 				</div>
 			
 			</div>
-			<a class="btn btn-success mt-2" :href="blogurl" download="video.mp4">Download</a>
+			<router-link class="btn btn-primary" :to="`/videos/${post.id}`">View Video</router-link>
+			<div>
+				<a class="btn btn-success mt-2" :href="blogurl" download="video.mp4">Download</a>
+			</div>
+		
 		</div>
 	</article>
-	<div class="spinner-border text-primary" role="status" v-else>
-		<span class="sr-only">Loading...</span>
-	</div>
+
 </template>
 
 <script>
@@ -63,16 +65,10 @@
 			}
 		},
 		async created () {
-			
-			const payload = { video_url: this.post.videoUrl, cookie: this.$store.state.cookie }
-			const { data } = await axios.post('https://tiktokserver100.herokuapp.com/video', payload, {
-				responseType: 'blob'
-			})
-			this.blogurl = URL.createObjectURL(data)
-			const dataurl = await downloadDataUrl(data)
-			this.dataurl = dataurl
-			
-			
+		
+		
+		
+		
 		}
 		
 	}

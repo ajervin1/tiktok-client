@@ -1,7 +1,7 @@
 <template>
 	<main id="app" class="container p-8">
-		<NavBar class="mb-8"/>
-		<VideoList v-if="state.posts"/>
+		<NavBar  class="mb-8"/>
+		<router-view />
 	</main>
 </template>
 
