@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<div v-if="blogurl" class="w-25 mx-auto">
-			<video :src="blogurl" class="img-fluid" controls></video>
+			<video :src="blogurl" class="img-fluid" controls preload="auto"></video>
 		</div>
 		<div v-else class="spinner-border text-primary">
 		
