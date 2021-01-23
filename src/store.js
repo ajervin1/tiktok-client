@@ -9,7 +9,8 @@ const store = new Vuex.Store({
 	state: {
 		posts: [],
 		cookie: '',
-		search_type: 'user'
+		search_type: 'user',
+		loading: false
 	},
 	mutations: {
 		setPosts (state, newposts) {
@@ -21,22 +22,30 @@ const store = new Vuex.Store({
 	},
 	actions: {
 		async fetchTrending (context, payload) {
+			context.state.loading = true
 			const { posts, headers } = await getTrending()
+			context.state.loading = false
 			context.state.cookie = headers.cookie
 			context.commit('setPosts', posts)
 		},
 		async fetchUserFeed (context, username) {
+			context.state.loading = true
 			const { posts, headers } = await getVideosByUser(username)
 			context.state.cookie = headers.cookie
+			context.state.loading = false
 			context.commit('setPosts', posts)
 		},
 		async fetchHashTagVideos (context, hashtag) {
+			context.state.loading = true
 			const { posts, headers } = await getVideosByHashTag(hashtag)
+			context.state.loading = false
 			context.state.cookie = headers.cookie
 			context.commit('setPosts', posts)
 		},
 		async fetchMusicVideos (context, music_id) {
+			context.state.loading = true
 			const { posts, headers } = await getVideosBySong(music_id)
+			context.state.loading = false
 			context.state.cookie = headers.cookie
 			context.commit('setPosts', posts)
 		},
@@ -54,8 +63,9 @@ const store = new Vuex.Store({
 })
 
 async function init () {
-	await store.dispatch("fetchTrending")
+	await store.dispatch('fetchTrending')
 }
+
 init()
 
 export default store
