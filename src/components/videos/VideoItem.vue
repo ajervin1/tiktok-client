@@ -65,13 +65,13 @@
 		async created () {
 			
 			const payload = { video_url: this.post.videoUrl, cookie: this.$store.state.cookie }
-			const { data } = await axios.post('http://localhost:4000/video', payload, {
+			const { data } = await axios.post('https://tiktokserver100.herokuapp.com/video', payload, {
 				responseType: 'blob'
 			})
 			this.blogurl = URL.createObjectURL(data)
 			const dataurl = await downloadDataUrl(data)
 			this.dataurl = dataurl
-	
+			
 			
 		}
 		
