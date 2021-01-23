@@ -3,7 +3,7 @@
 
 const store = require('./store')
 const axios = require('axios').create({
-	baseURL: 'http://localhost:4000',
+	baseURL: 'https://tiktokserver100.herokuapp.com/',
 	headers: {
 		referer: 'https://www.tiktok.com/',
 		
