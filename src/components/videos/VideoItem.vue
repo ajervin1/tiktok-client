@@ -1,47 +1,37 @@
 <template>
-	<article class="font-size-xs card border" >
-		<img :src="post.covers.dynamic" class="">
-		<div class="card-body">
-			<div class="meta-data">
-				<div>Views: {{ post.playCount }}</div>
-				<div>Shares: {{ post.shareCount }}</div>
-				<div>Created: {{ post.createTime }}</div>
-			</div>
-			<div class="music-info">
-				<div>Music Id: {{ post.musicMeta.musicId }}</div>
-				<div>{{ post.musicMeta.musicName }}</div>
-			
-			</div>
-			<div class="mb-2 actions">
-				<button @click="handleMusic(post.musicMeta.musicId)"
-				        class="btn my-2 btn-primary mr-2">
-					Get By Musid Id
+	<article class="font-size-xs card border bg-light">
+		<div class="image-container w-25 mx-auto">
+			<img :src="post.covers.dynamic" class="img-fluid">
+		</div>
+		<!--Post Details-->
+		<div class="card-body py-2 pb-3">
+			<p class="my-2">{{ post.text }}</p>
+			<div class=""><strong>Views: </strong> {{ post.playCount }}</div>
+		</div>
+		<!--Actions-->
+		<div class="card-footer py-3">
+			<!--Post Actions-->
+			<div class="post-actions">
+				<button class="btn btn-success btn-sm small mr-4" @click="addFileToZip(post)">
+					Add To Zip
 				</button>
-				<button class="btn btn-dark my-2 mr-2" @click="handleUser(post.authorMeta.name)">
-					Get User Videos
-				</button>
-				<div>
-					<h6>HashTags</h6>
-					<button @click="handleHash(hash.name)"
-					        class="badge badge-dark border-0 mb-2 btn-sm mr-2"
-					        v-for="hash in post.hashtags">
-						{{ hash.name }}
-					</button>
-				</div>
-			
-			</div>
-			<router-link class="btn btn-primary" :to="`/videos/${post.id}`">View Video</router-link>
-			<div>
-				<a class="btn btn-success mt-2" :href="blogurl" download="video.mp4">Download</a>
+				<router-link :to="`/videos/${post.id}`" class="btn btn-primary btn-sm small">
+					View Video
+				</router-link>
 			</div>
 		
 		</div>
+	
 	</article>
 
 </template>
 
 <script>
-	import { downloadDataUrl, downloadVideo } from '../../helpers'
+	/*
+	 Attach Actions Buttons To Video
+	 Get Single Video
+	 * */
+	import { downloadDataUrl } from '../../helpers'
 	import axios from 'axios'
 	
 	export default {
@@ -54,21 +44,21 @@
 			}
 		},
 		methods: {
-			async handleMusic (musicId) {
-				await this.$store.dispatch('fetchMusicVideos', musicId)
-			},
 			async handleUser (username) {
 				await this.$store.dispatch('fetchUserFeed', username)
 			},
-			async handleHash (hashtag) {
-				await this.$store.dispatch('fetchHashTagVideos', hashtag)
+			addFileToZip (video) {
+				const { videoUrl, covers: { dynamic }, id, text } = video
+				this.$store.state.videoUrls.push({ videoUrl, dynamic, id, text })
 			}
 		},
 		async created () {
-		
-		
-		
-		
+			// const payload = { video_url: this.post.videoUrl, cookie: this.$store.state.cookie }
+			// const { data } = await axios.post('https://tiktokserver100.herokuapp.com/video', payload, {
+			// 	responseType: 'blob'
+			// })
+			// this.blogurl = URL.createObjectURL(data)
+			
 		}
 		
 	}

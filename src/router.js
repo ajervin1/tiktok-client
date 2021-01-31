@@ -18,5 +18,5 @@ const router = new Router({
 			component: Show
 		}
 	]
-});
+})
 export default router

@@ -1,6 +1,6 @@
 <template>
 	<div class="row" v-if="posts.length">
-		<div class="col-3 mb-8" v-for="post in posts">
+		<div class="col-4 mb-8" v-for="post in posts">
 			<VideoItem :key="post.id" :post="post"/>
 		</div>
 	</div>

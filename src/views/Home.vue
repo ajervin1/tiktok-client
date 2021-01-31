@@ -1,14 +1,13 @@
 <template>
-	<main >
+	<div>
 		<div v-if="$store.state.loading">
-			<div class="spinner-border text-primary" >
+			<div class="spinner-border text-primary">
 			
 			</div>
 			<small class="ml-2">Loading</small>
 		</div>
-	
-		<VideoList />
-	</main>
+		<VideoList/>
+	</div>
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 <template>
 	<nav class="navbar navbar-expand navbar-light bg-light justify-content-between px-10 py-6">
-		<a class="navbar-brand">
+		<router-link to="/" class="navbar-brand">
 			<img :src="logo">
-		</a>
+		</router-link>
 		<!--SearchForm-->
 		<SearchForm/>
 		<!--SearchForm-->
@@ -29,6 +29,7 @@
 		},
 		methods: {
 			async handleClick () {
+				this.$store.state.posts = []
 				await this.$store.dispatch('fetchTrending')
 			}
 		}
