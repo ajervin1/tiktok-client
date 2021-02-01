@@ -12,7 +12,8 @@
 				</button>
 				<div class="dropdown-menu">
 					<div class="dropdown-item" v-for="video in this.$store.state.videoUrls">
-						<img :src="video.dynamic" class="pr-2 d-block mx-auto" width="60px" height="60px">
+						<img :src="video.dynamic" class="pr-2 d-block mx-auto" width="60px"
+						     height="60px">
 					</div>
 				
 				</div>
@@ -72,7 +73,7 @@
 					cookie: this.$store.state.cookie
 				}
 				console.log(payload)
-				const url = 'http://localhost:4000/zip_videos'
+				const url = 'https://tiktokserver100.herokuapp.com/zip_videos'
 				const { data } = await axios.post(url, payload)
 				this.download_ready = true
 				this.$store.state.videoUrls = []
