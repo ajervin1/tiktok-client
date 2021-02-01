@@ -28,7 +28,7 @@
 			<!--Download Button-->
 			<div v-if="download_ready">
 				<a class="btn btn-success ml-4"
-				   href="http://localhost:4000/download"
+				   href="https://tiktokserver100.herokuapp.com/download"
 				   @click="resetDownload">Download Zip Folder
 				</a>
 			</div>
