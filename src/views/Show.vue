@@ -10,7 +10,8 @@
 					<div class="col-8">
 						<div class="d-flex align-items-center">
 							<div class="avatar pr-4">
-								<img :src="post.authorMeta.avatar" width="60" class="rounded-circle">
+								<img :src="post.authorMeta.avatar" width="60"
+								     class="rounded-circle">
 							</div>
 							<div>
 								<h4 class="">{{ post.authorMeta.name }}</h4>
@@ -27,13 +28,15 @@
 								<span class="h4">{{ post.musicMeta.musicName }}</span>
 							</div>
 							
-							<div class="mb-2"><strong>Play Count: </strong>{{ post.playCount }}</div>
-							<a class="badge badge-primary " :href="post.musicMeta.playUrl">Music Url</a>
+							<div class="mb-2"><strong>Play Count: </strong>{{ post.playCount }}
+							</div>
+							<a class="badge badge-primary " :href="post.musicMeta.playUrl">Music
+								Url</a>
 						</div>
 					</div>
 				</div>
 			</div>
-
+		
 		</article>
 	
 	

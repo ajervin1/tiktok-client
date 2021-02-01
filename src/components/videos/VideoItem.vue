@@ -1,6 +1,6 @@
 <template>
 	<article class="font-size-xs card border bg-light">
-		<div class="image-container w-25 mx-auto">
+		<div class="image-container w-50 mx-auto">
 			<img :src="post.covers.dynamic" class="img-fluid">
 		</div>
 		<!--Post Details-->
